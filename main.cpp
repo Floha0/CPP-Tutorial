@@ -3,6 +3,7 @@
 
 using namespace std;
 
+
 int Calculator(int n1, int n2);
 
 int main() {
@@ -44,6 +45,13 @@ int main() {
     do {
         cout << index++ << " ";
     }while(index <= 5);
+    cout << endl;
+
+    string *pName = &name;
+    cout << "name address is: " << pName << " | deaddress is: " << *pName<< endl;
+    cout << "name address is: " << &name << " | deaddress is: " << *&name<< endl;
+
+
 
     return 0;
 }
