@@ -3,6 +3,11 @@
 
 using namespace std;
 
+class Phone {
+public:
+    string brand;
+    int age;
+};
 
 int Calculator(int n1, int n2);
 
@@ -51,7 +56,11 @@ int main() {
     cout << "name address is: " << pName << " | deaddress is: " << *pName<< endl;
     cout << "name address is: " << &name << " | deaddress is: " << *&name<< endl;
 
+    Phone iphone;
+    iphone.brand = "Furkan";
+    iphone.age = 1;
 
+    cout << "Phone's brand is: " << iphone.brand << " | and age is: " << iphone.age << endl;
 
     return 0;
 }
