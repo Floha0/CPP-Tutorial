@@ -4,9 +4,22 @@
 using namespace std;
 
 class Phone {
-public:
-    string brand;
-    int age;
+    public:
+        string brand;
+        int age;
+        int stockCount;
+        Phone(string aBrand) {
+            // This is a constructor that runs like a function but when is creating object
+            cout << "Creating " << aBrand << endl;
+            brand = aBrand;
+        }
+
+        bool isOutOfStock() {
+            if (stockCount > 0) {
+                return false;
+            }
+            return true;
+        }
 };
 
 int Calculator(int n1, int n2);
@@ -56,11 +69,12 @@ int main() {
     cout << "name address is: " << pName << " | deaddress is: " << *pName<< endl;
     cout << "name address is: " << &name << " | deaddress is: " << *&name<< endl;
 
-    Phone iphone;
-    iphone.brand = "Furkan";
+    Phone iphone("IPhone");
     iphone.age = 1;
+    iphone.stockCount = 5;
 
     cout << "Phone's brand is: " << iphone.brand << " | and age is: " << iphone.age << endl;
+    cout << "Phone's stock count is: " << iphone.stockCount << " | is out of stock: " << iphone.isOutOfStock() << endl;
 
     return 0;
 }
