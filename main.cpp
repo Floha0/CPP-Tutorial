@@ -3,26 +3,50 @@
 
 using namespace std;
 
+int Calculator(int n1, int n2);
+
 class Phone {
-    public:
-        string brand;
-        int age;
-        int stockCount;
-        Phone(string aBrand) {
-            // This is a constructor that runs like a function but when is creating object
-            cout << "Creating " << aBrand << endl;
+private:
+    string brand;
+
+public:
+    int age;
+    int stockCount;
+    Phone(string aBrand, int aAge, int aStockCount) {
+        // This is a constructor that runs like a function but when is creating object
+        setBrand(aBrand);
+        cout << "Creating " << brand << endl;
+        age = aAge;
+        stockCount = aStockCount;
+    }
+
+    void setBrand(string aBrand) {
+        if (aBrand == "Iphone" || aBrand == "Samsung") {
             brand = aBrand;
         }
-
-        bool isOutOfStock() {
-            if (stockCount > 0) {
-                return false;
-            }
-            return true;
+        else {
+            brand = "Invalid";
         }
+    }
+
+    string getBrand() {
+        return brand;
+    }
+
+    bool isOutOfStock() {
+        if (stockCount > 0) {
+            return false;
+        }
+        return true;
+    }
 };
 
-int Calculator(int n1, int n2);
+class Tablet : public Phone{
+public:
+    Tablet(string aBrand, int aAge, int aStockCount)
+        : Phone(aBrand, aAge, aStockCount) {
+    }
+};
 
 int main() {
     string name;
@@ -69,12 +93,18 @@ int main() {
     cout << "name address is: " << pName << " | deaddress is: " << *pName<< endl;
     cout << "name address is: " << &name << " | deaddress is: " << *&name<< endl;
 
-    Phone iphone("IPhone");
-    iphone.age = 1;
-    iphone.stockCount = 5;
+    Phone iphone("Iphone", 1, 5);
+    iphone.age = 2;
 
-    cout << "Phone's brand is: " << iphone.brand << " | and age is: " << iphone.age << endl;
+    cout << "Phone's brand is: " << iphone.getBrand() << " | and age is: " << iphone.age << endl;
     cout << "Phone's stock count is: " << iphone.stockCount << " | is out of stock: " << iphone.isOutOfStock() << endl;
+
+    Tablet tablet("Iphone", 1, 5);
+    tablet.age = 2;
+
+    cout << "Phone's brand is: " << tablet.getBrand() << " | and age is: " << tablet.age << endl;
+    cout << "Phone's stock count is: " << tablet.stockCount << " | is out of stock: " << tablet.isOutOfStock() << endl;
+
 
     return 0;
 }
